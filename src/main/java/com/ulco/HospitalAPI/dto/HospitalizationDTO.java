@@ -13,22 +13,21 @@ import java.util.Date;
 @AllArgsConstructor
 public class HospitalizationDTO {
 
-    Integer id;
 
     @NotNull
-    Integer serviceId;
+    private Integer serviceId;
 
     @NotNull
-    Integer doctorId;
+    private Integer doctorId;
 
     @NotNull
-    Integer patientId;
+    private Integer patientId;
 
     @NotBlank
-    Date startDate;
+    private Date startDate;
 
     @NotBlank
-    Date endDate;
+    private Date endDate;
 
 
 }
