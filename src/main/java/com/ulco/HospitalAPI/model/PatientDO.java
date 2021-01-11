@@ -21,5 +21,6 @@ public class PatientDO {
     private String lastname;
 
     @Column(name = "sexe")
+    @Enumerated(EnumType.STRING)
     private Sexe sexe;
 }
