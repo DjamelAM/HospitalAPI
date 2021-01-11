@@ -1,4 +1,5 @@
 package com.ulco.HospitalAPI.dto;
 
-public class Service {
+public enum Sexe {
+    M, F;
 }
