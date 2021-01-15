@@ -6,9 +6,9 @@ spring:
     enabled: true
     change-log: classpath:/db/changelog/changelog-master.xml
   datasource:
-    username: pokemon
-    password: pokemon
-    url: jdbc:h2:mem:pokemon_db;
+    username: hospital
+    password: hospital
+    url: jdbc:h2:mem:doctor_db;
     driver-class-name: org.h2.Driver
 
   jpa:

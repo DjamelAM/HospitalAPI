@@ -1,6 +1,6 @@
 package com.ulco.HospitalAPI.model;
 
-import com.ulco.HospitalAPI.enums.Sexe;
+import com.ulco.HospitalAPI.enums.SexeEnum;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,5 +22,5 @@ public class PatientDO {
 
     @Column(name = "sexe")
     @Enumerated(EnumType.STRING)
-    private Sexe sexe;
+    private SexeEnum sexeEnum;
 }

@@ -1,5 +1,5 @@
 package com.ulco.HospitalAPI.enums;
 
-public enum Sexe {
+public enum SexeEnum {
     M, F;
 }

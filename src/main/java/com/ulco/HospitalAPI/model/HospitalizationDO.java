@@ -26,9 +26,11 @@ public class HospitalizationDO {
     private Integer patientId;
 
     @Column(name = "start_date")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
     @Column(name = "end_date")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
 }

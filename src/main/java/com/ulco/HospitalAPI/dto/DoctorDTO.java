@@ -1,6 +1,6 @@
 package com.ulco.HospitalAPI.dto;
 
-import com.ulco.HospitalAPI.enums.Sexe;
+import com.ulco.HospitalAPI.enums.SexeEnum;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -18,7 +18,7 @@ public class DoctorDTO {
     private String lastname;
 
     @NotBlank
-    private Sexe sexe;
+    private SexeEnum sexe;
 
     @NotNull
     private Integer serviceId;

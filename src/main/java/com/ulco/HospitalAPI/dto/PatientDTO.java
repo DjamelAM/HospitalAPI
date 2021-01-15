@@ -1,9 +1,15 @@
 package com.ulco.HospitalAPI.dto;
 
-import com.ulco.HospitalAPI.enums.Sexe;
+import com.ulco.HospitalAPI.enums.SexeEnum;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PatientDTO {
     String firstname;
     String lastname;
-    Sexe sexe;
+    SexeEnum sexeEnum;
 }
