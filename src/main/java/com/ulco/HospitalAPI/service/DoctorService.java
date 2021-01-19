@@ -21,31 +21,31 @@ import java.util.stream.Collectors;
 public class DoctorService implements IDoctorService {
 
     @Autowired
-    private IDoctorMapper DoctorMapper;
+    private IDoctorMapper doctorMapper;
 
     @Autowired
-    private IDoctorRepository DoctorRepository;
+    private IDoctorRepository doctorRepository;
 
     @Override
     public DoctorDTO findById(final Integer id) {
-        return DoctorRepository.findById(id)
-                .map(DoctorMapper::toDoctorDTO)
+        return doctorRepository.findById(id)
+                .map(doctorMapper::toDoctorDTO)
                 .orElseThrow(NotFoundException::new);
     }
 
     @Override
     public List<DoctorDTO> findAll() {
-        return DoctorRepository.findAll().stream()
-                .map(DoctorMapper::toDoctorDTO)
+        return doctorRepository.findAll().stream()
+                .map(doctorMapper::toDoctorDTO)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Integer save(final DoctorDTO DoctorDTO) {
+    public Integer save(final DoctorDTO doctorDTO) {
 
 
-        final DoctorDO DoctorToCreate = DoctorMapper.toDoctorDO(DoctorDTO);
-        final DoctorDO createdDoctor = DoctorRepository.save(DoctorToCreate);
+        final DoctorDO doctorToCreate = doctorMapper.toDoctorDO(doctorDTO);
+        final DoctorDO createdDoctor = doctorRepository.save(doctorToCreate);
         return createdDoctor.getId();
     }
 
@@ -54,21 +54,21 @@ public class DoctorService implements IDoctorService {
 
         findById(id);
 
-        DoctorDO DoctorToUpdate = DoctorMapper.toDoctorDO(DoctorDTO);
+        DoctorDO DoctorToUpdate = doctorMapper.toDoctorDO(DoctorDTO);
         DoctorToUpdate.setId(id);
 
-        DoctorRepository.save(DoctorToUpdate);
+        doctorRepository.save(DoctorToUpdate);
     }
 
     @Override
     public void deleteById(final Integer id) {
         findById(id);
-        DoctorRepository.deleteById(id);
+        doctorRepository.deleteById(id);
     }
 
     @Override
     public void deleteAll() {
-        DoctorRepository.deleteAll();
+        doctorRepository.deleteAll();
     }
 
 

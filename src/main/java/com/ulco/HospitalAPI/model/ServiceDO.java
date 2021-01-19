@@ -16,6 +16,6 @@ public class ServiceDO {
     private String name;
 
     @Column(name = "description")
-    private String desctription;
+    private String description;
 
 }

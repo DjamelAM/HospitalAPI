@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -30,7 +32,6 @@ public class HospitalizationsController {
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody HospitalizationDTO hospitalization) {
-
 
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
