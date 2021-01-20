@@ -25,10 +25,10 @@ public class HospitalizationDTO {
     private Integer patientId;
 
     @NotBlank
-    private Date startDate;
+    private String startDate;
 
     @NotBlank
-    private Date endDate;
+    private String endDate;
 
 
 }

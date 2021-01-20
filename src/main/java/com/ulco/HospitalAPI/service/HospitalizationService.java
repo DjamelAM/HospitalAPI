@@ -71,6 +71,21 @@ public class HospitalizationService implements IHospitalizationService {
     }
 
 
+    @Override
+    public HospitalizationDTO findHospitalizationsByPatient(Integer id) {
+
+        //return hospitalizationRepository.findByPatientId(id).map(hospitalizationMapper::toHospitalizationDTO).orElseThrow(NotFoundException::new);
+        final HospitalizationDTO hospitalization = hospitalizationMapper.toHospitalizationDTO(hospitalizationRepository.findByPatientId(id));
+        return hospitalization;
+
+    }
+    @Override
+    public HospitalizationDTO findHospitalizationsByService(Integer id) {
+
+        final HospitalizationDTO hospitalization = hospitalizationMapper.toHospitalizationDTO(hospitalizationRepository.findByServiceId(id));
+        return hospitalization;
+
+    }
 
 }
 

@@ -1,6 +1,8 @@
 package com.ulco.HospitalAPI.controller;
 
+import com.ulco.HospitalAPI.dto.HospitalizationDTO;
 import com.ulco.HospitalAPI.dto.ServiceDTO;
+import com.ulco.HospitalAPI.service.IHospitalizationService;
 import com.ulco.HospitalAPI.service.IServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,10 +19,20 @@ public class ServicesController {
     @Autowired
     private IServiceService serviceService;
 
+    @Autowired
+    private IHospitalizationService hospitalizationService;
+
+
     @GetMapping
     public List<ServiceDTO> getAll() {
         return serviceService.findAll();
     }
+
+    @GetMapping("/{id}/hospitalizations")
+    public HospitalizationDTO findHospitalizationsByService(@PathVariable Integer id) {
+        return hospitalizationService.findHospitalizationsByService(id);
+    }
+
 
     @GetMapping("/{id}")
     public ServiceDTO findById(@PathVariable Integer id) {
@@ -47,15 +59,5 @@ public class ServicesController {
     }
 
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping
-    public void deleteAll() {
-        serviceService.deleteAll();
-    }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Integer id) {
-        serviceService.deleteById(id);
-    }
 }

@@ -17,4 +17,9 @@ public interface IHospitalizationService {
     void deleteAll();
 
     void deleteById(Integer id);
+
+    HospitalizationDTO findHospitalizationsByPatient(Integer id);
+
+    HospitalizationDTO findHospitalizationsByService(Integer id);
+
 }

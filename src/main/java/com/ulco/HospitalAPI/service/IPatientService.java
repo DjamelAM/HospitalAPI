@@ -1,5 +1,6 @@
 package com.ulco.HospitalAPI.service;
 
+import com.ulco.HospitalAPI.dto.HospitalizationDTO;
 import com.ulco.HospitalAPI.dto.PatientDTO;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface IPatientService {
     void deleteAll();
 
     void deleteById(Integer id);
+
+    List<PatientDTO> findByDoctorId(Integer id);
 }

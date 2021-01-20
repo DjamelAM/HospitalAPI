@@ -1,8 +1,11 @@
 package com.ulco.HospitalAPI.controller;
 
 import com.ulco.HospitalAPI.dto.DoctorDTO;
+import com.ulco.HospitalAPI.dto.HospitalizationDTO;
 import com.ulco.HospitalAPI.service.DoctorService;
 import com.ulco.HospitalAPI.service.IDoctorService;
+import com.ulco.HospitalAPI.service.IHospitalizationService;
+import com.ulco.HospitalAPI.service.IPatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +30,9 @@ public class DoctorsController {
     @Autowired
     private IDoctorService doctorService;
 
+   @Autowired
+   private IPatientService patientService;
+
     @GetMapping
     public List<DoctorDTO> getAll() {
         return doctorService.findAll();
@@ -36,6 +42,13 @@ public class DoctorsController {
     public DoctorDTO findById(@PathVariable Integer id) {
         return doctorService.findById(id);
     }
+
+    @GetMapping("/{id}/patients")
+    public HospitalizationDTO findPatientsByDoctor(@PathVariable Integer id) {
+        return patientService.findByDoctorId(id);
+    }
+
+
 
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody DoctorDTO doctor) {
@@ -57,15 +70,5 @@ public class DoctorsController {
     }
 
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping
-    public void deleteAll() {
-        doctorService.deleteAll();
-    }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Integer id) {
-        doctorService.deleteById(id);
-    }
 }

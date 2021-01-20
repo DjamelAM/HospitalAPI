@@ -1,10 +1,13 @@
 package com.ulco.HospitalAPI.service;
 
 
+import com.ulco.HospitalAPI.dto.HospitalizationDTO;
 import com.ulco.HospitalAPI.dto.PatientDTO;
 import com.ulco.HospitalAPI.exception.NotFoundException;
+import com.ulco.HospitalAPI.mapper.IHospitalizationMapper;
 import com.ulco.HospitalAPI.mapper.IPatientMapper;
 import com.ulco.HospitalAPI.model.PatientDO;
+import com.ulco.HospitalAPI.repository.IHospitalizationRepository;
 import com.ulco.HospitalAPI.repository.IPatientRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,7 @@ public class PatientService implements IPatientService {
 
     @Autowired
     private IPatientRepository patientRepository;
+
 
     @Override
     public PatientDTO findById(final Integer id) {
@@ -63,6 +67,14 @@ public class PatientService implements IPatientService {
         findById(id);
         patientRepository.deleteById(id);
     }
+
+    @Override
+    public List<PatientDTO> findByDoctorId(Integer id) {
+        return patientRepository.findByDoctor(id).stream()
+                .map(patientMapper::toPatientDTO)
+                .collect(Collectors.toList());
+    }
+
 
     @Override
     public void deleteAll() {
